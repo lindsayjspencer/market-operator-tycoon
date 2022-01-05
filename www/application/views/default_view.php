@@ -4,12 +4,12 @@
 		<title>Dragonfly</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<script src="/assets/npm/city/node_modules/jquery/dist/jquery.min.js"></script>
-		<link type="text/css" rel="stylesheet" href="/assets/npm/city/node_modules/bootstrap/dist/css/bootstrap.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha512-bnIvzh6FU75ZKxp0GXLH9bewza/OIw6dLVh9ICg0gogclmYGguQJWl8U30WpbsGTqbIiAwxTsbe76DErLq5EDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css" integrity="sha512-T584yQ/tdRR5QwOpfvDfVQUidzfgc2339Lc8uBDtcp/wYu80d7jwBgAxbyMh0a9YM9F8N3tdErpFI8iaGx6x5g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous">
-		<script type="module" src="/assets/npm/city/node_modules/@popperjs/core/dist/esm/popper.js"></script>
-		<script src="/assets/npm/city/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-		<script src="/assets/npm/city/tween.js/dist/tween.umd.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.2.1/dist/cjs/popper.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.min.js" integrity="sha512-UR25UO94eTnCVwjbXozyeVd6ZqpaAE9naiEUBK/A+QDbfSTQFhPGj5lOR6d8tsgbBk84Ggb5A3EkjsOgPRPcKA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+		<script src="/assets/tween.js"></script>
 		<style>
             @media only screen and (min-width: 578px) {
                 .to-toggle {
@@ -700,22 +700,21 @@
 		</div>
 		<div id="container"></div>
 
-		<script src="/assets/npm/city/node_modules/three/examples/js/libs/ammo.js"></script>
-
+		<script src="/assets/node_modules/three/examples/js/libs/ammo.js"></script>
 		<script type="module">
 
 
-            import * as THREE from '/assets/npm/city/node_modules/three/build/three.module.js';
+            import * as THREE from '/assets/node_modules/three/build/three.module.js';
 
-            import Stats from '/assets/npm/city/node_modules/three/examples/jsm/libs/stats.module.js';
-            import { GUI } from '/assets/npm/city/node_modules/three/examples/jsm/libs/dat.gui.module.js';
+            import Stats from '/assets/node_modules/three/examples/jsm/libs/stats.module.js';
+            import { GUI } from '/assets/node_modules/three/examples/jsm/libs/dat.gui.module.js';
 
-            import { OrbitControls } from '/assets/npm/city/node_modules/three/examples/jsm/controls/OrbitControls.js';
-            import { OBJLoader } from '/assets/npm/city/node_modules/three/examples/jsm/loaders/OBJLoader.js';
-            import { DDSLoader } from '/assets/npm/city/node_modules/three/examples/jsm/loaders/DDSLoader.js';
-            import { MTLLoader } from '/assets/npm/city/node_modules/three/examples/jsm/loaders/MTLLoader.js';
-            import { FBXLoader } from '/assets/npm/city/node_modules/three/examples/jsm/loaders/FBXLoader.js';
-			import { BufferGeometryUtils } from '/assets/npm/city/node_modules/three/examples/jsm/utils/BufferGeometryUtils.js';
+            import { OrbitControls } from '/assets/node_modules/three/examples/jsm/controls/OrbitControls.js';
+            import { OBJLoader } from '/assets/node_modules/three/examples/jsm/loaders/OBJLoader.js';
+            import { DDSLoader } from '/assets/node_modules/three/examples/jsm/loaders/DDSLoader.js';
+            import { MTLLoader } from '/assets/node_modules/three/examples/jsm/loaders/MTLLoader.js';
+            import { FBXLoader } from '/assets/node_modules/three/examples/jsm/loaders/FBXLoader.js';
+			import { BufferGeometryUtils } from '/assets/node_modules/three/examples/jsm/utils/BufferGeometryUtils.js';
 
             var cameraCenter = new THREE.Vector2(0,0);
 
@@ -1238,47 +1237,47 @@
 
                 var textureLoader = new THREE.TextureLoader( manager );
 
-                chalkboardTextures.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/chalkboards/chalkboard0-min.jpg' ) );
-                chalkboardTextures.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/chalkboards/chalkboard1-min.jpg' ) );
-                chalkboardTextures.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/chalkboards/chalkboard2-min.jpg' ) );
-                chalkboardTextures.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/chalkboards/chalkboard3-min.jpg' ) );
-                chalkboardTextures.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/chalkboards/chalkboard4-min.jpg' ) );
-                chalkboardTextures.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/chalkboards/chalkboard5-min.jpg' ) );
-                chalkboardTextures.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/chalkboards/chalkboard6-min.jpg' ) );
-                chalkboardTextures.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/chalkboards/chalkboard7-min.jpg' ) );
-                fabrics.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_fabric0-min.png' ) );
-                fabrics.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_fabric1-min.png' ) );
-                fabrics.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_fabric2-min.jpg' ) );
-                fabrics.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_fabric3-min.jpg' ) );
-                fabrics.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_fabric4-min.jpg' ) );
-                grasses.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_grass0-min.jpg' ) );
-                grasses.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_grass1-min.jpg' ) );
-                grasses.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_grass2-min.jpg' ) );
-                concrete_bm.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_concrete0_bm-min.png' ) );
-                concreteTextures.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_concrete0-min.png' ) );
-                concreteTextures.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_concrete1-min.png' ) );
-                concreteTextures.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_concrete2-min.jpg' ) );
-                bricks_bm.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_bricks0_bm-min.png' ) );
-                bricks.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_bricks0-min.png' ) );
-                bricks.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_bricks1-min.png' ) );
-                bricks.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_bricks2-min.png' ) );
-                bricks.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_bricks3-min.png' ) );
-                bricks.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_bricks4-min.png' ) );
-                bricks.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_bricks5-min.jpg' ) );
-                roads.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/roads0-min.png' ) );
-                roads.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/roads1-min.png' ) );
-                roads.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/roads2-min.png' ) );
-                road_markings.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/road_markings/2ln_g.png' ) );
-                road_markings.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/road_markings/2lnh_g.png' ) );
-                stones.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/stones0-min.png' ) );
-                woodTextures.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_wood1-min.jpg' ) );
-                woodTextures.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_wood2-min.jpg' ) );
-                bananaTextures.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_banana-min.jpg' ) );
-                marketLogoTextures.push( textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/milton_market_logo.png' ) );
-                toiletSignTx = textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/toilet_sign.jpg' );
+                chalkboardTextures.push( textureLoader.load( '/assets/textures/chalkboards/chalkboard0-min.jpg' ) );
+                chalkboardTextures.push( textureLoader.load( '/assets/textures/chalkboards/chalkboard1-min.jpg' ) );
+                chalkboardTextures.push( textureLoader.load( '/assets/textures/chalkboards/chalkboard2-min.jpg' ) );
+                chalkboardTextures.push( textureLoader.load( '/assets/textures/chalkboards/chalkboard3-min.jpg' ) );
+                chalkboardTextures.push( textureLoader.load( '/assets/textures/chalkboards/chalkboard4-min.jpg' ) );
+                chalkboardTextures.push( textureLoader.load( '/assets/textures/chalkboards/chalkboard5-min.jpg' ) );
+                chalkboardTextures.push( textureLoader.load( '/assets/textures/chalkboards/chalkboard6-min.jpg' ) );
+                chalkboardTextures.push( textureLoader.load( '/assets/textures/chalkboards/chalkboard7-min.jpg' ) );
+                fabrics.push( textureLoader.load( '/assets/textures/rsz_fabric0-min.png' ) );
+                fabrics.push( textureLoader.load( '/assets/textures/rsz_fabric1-min.png' ) );
+                fabrics.push( textureLoader.load( '/assets/textures/rsz_fabric2-min.jpg' ) );
+                fabrics.push( textureLoader.load( '/assets/textures/rsz_fabric3-min.jpg' ) );
+                fabrics.push( textureLoader.load( '/assets/textures/rsz_fabric4-min.jpg' ) );
+                grasses.push( textureLoader.load( '/assets/textures/rsz_grass0-min.jpg' ) );
+                grasses.push( textureLoader.load( '/assets/textures/rsz_grass1-min.jpg' ) );
+                grasses.push( textureLoader.load( '/assets/textures/rsz_grass2-min.jpg' ) );
+                concrete_bm.push( textureLoader.load( '/assets/textures/rsz_concrete0_bm-min.png' ) );
+                concreteTextures.push( textureLoader.load( '/assets/textures/rsz_concrete0-min.png' ) );
+                concreteTextures.push( textureLoader.load( '/assets/textures/rsz_concrete1-min.png' ) );
+                concreteTextures.push( textureLoader.load( '/assets/textures/rsz_concrete2-min.jpg' ) );
+                bricks_bm.push( textureLoader.load( '/assets/textures/rsz_bricks0_bm-min.png' ) );
+                bricks.push( textureLoader.load( '/assets/textures/rsz_bricks0-min.png' ) );
+                bricks.push( textureLoader.load( '/assets/textures/rsz_bricks1-min.png' ) );
+                bricks.push( textureLoader.load( '/assets/textures/rsz_bricks2-min.png' ) );
+                bricks.push( textureLoader.load( '/assets/textures/rsz_bricks3-min.png' ) );
+                bricks.push( textureLoader.load( '/assets/textures/rsz_bricks4-min.png' ) );
+                bricks.push( textureLoader.load( '/assets/textures/rsz_bricks5-min.jpg' ) );
+                roads.push( textureLoader.load( '/assets/textures/roads0-min.png' ) );
+                roads.push( textureLoader.load( '/assets/textures/roads1-min.png' ) );
+                roads.push( textureLoader.load( '/assets/textures/roads2-min.png' ) );
+                road_markings.push( textureLoader.load( '/assets/textures/road_markings/2ln_g.png' ) );
+                road_markings.push( textureLoader.load( '/assets/textures/road_markings/2lnh_g.png' ) );
+                stones.push( textureLoader.load( '/assets/textures/stones0-min.png' ) );
+                woodTextures.push( textureLoader.load( '/assets/textures/rsz_wood1-min.jpg' ) );
+                woodTextures.push( textureLoader.load( '/assets/textures/rsz_wood2-min.jpg' ) );
+                bananaTextures.push( textureLoader.load( '/assets/textures/rsz_banana-min.jpg' ) );
+                marketLogoTextures.push( textureLoader.load( '/assets/textures/milton_market_logo.png' ) );
+                toiletSignTx = textureLoader.load( '/assets/textures/toilet_sign.jpg' );
                 highlightTextures.push( new THREE.Texture( ) );
 
-                waterNormals = textureLoader.load( '/assets/npm/city/node_modules/three/examples/jsm/textures/prod/rsz_bricks4-min.png' );
+                waterNormals = textureLoader.load( '/assets/textures/rsz_bricks4-min.png' );
 
                 $(".loading").html("Loading textures");
                 manager.onLoad = function() {
@@ -1292,7 +1291,7 @@
 
 
                             new OBJLoader( )
-                                .setPath( '/assets/npm/city/node_modules/three/examples/models/' )
+                                .setPath( '/assets/models/' )
                                 .load( 'banana.obj', function ( obj ) {
                                     var banana_mtl = new THREE.MeshLambertMaterial({map: bananaTextures[0]});
                                     obj.traverse( function ( child ) {
@@ -1311,7 +1310,7 @@
 
                                     var loader = new THREE.FontLoader();
 
-                                    loader.load( '/assets/npm/city/node_modules/three/examples/fonts/helvetiker_regular.typeface.json', function ( font ) {
+                                    loader.load( '/assets/node_modules/three/examples/fonts/helvetiker_regular.typeface.json', function ( font ) {
 
                                         defaultFont = font;
 

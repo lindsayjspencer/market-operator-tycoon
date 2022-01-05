@@ -1,13 +1,4 @@
 node_modules/
-registrations/photos
-workspace.config.code-workspace
-assets/npm
-assets/common/logos
-assets/email/uploads
-assets/js/dist
 .env*
-assets/invoices
 .sass-cache/*
-assets/css/dist
-assets/email/*
 application/vendor
