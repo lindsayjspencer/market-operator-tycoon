@@ -13,7 +13,7 @@ class base_model extends CI_Model {
         $this->table = "";
 
         //shortcuts
-        $this->full_table = $this->db->database . "." . $this->db->dbprefix . $this->table;
+        $this->full_table = "`" . $this->db->database . "`." . $this->db->dbprefix . $this->table;
 		$this->select = "SELECT * FROM " . $this->full_table . " ";
 
     }
