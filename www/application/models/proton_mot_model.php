@@ -14,7 +14,7 @@ class proton_mot_model extends base_model {
         $this->table = "mot_game";
 
         //shortcuts
-        $this->full_table = $this->db->database . "." . $this->db->dbprefix . $this->table;
+        $this->full_table = "`" . $this->db->database . "`." . $this->db->dbprefix . $this->table;
 		$this->select = "SELECT * FROM " . $this->full_table . " ";
 
     }
