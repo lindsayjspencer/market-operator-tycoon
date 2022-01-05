@@ -8,6 +8,7 @@ class three_controller extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->library('session');
+		$this->load->database();
 
 		$this->data = [];
 
@@ -16,68 +17,6 @@ class three_controller extends CI_Controller {
 			$this->is_ajax = true;
 		}
 
-
-	}
-
-	public function two() {
-
-		$data = [];
-		if($this->is_ajax) {
-			$data["locs"] = $this->db->query("SELECT mapLocId, mapLocX, mapLocY, mapLocName, LocRotate, hasAwning FROM `cerb_map_loc` WHERE `mapLocMapId` = 47")->result_array();
-			$bookings = $this->db->query("SELECT ClientAttendanceScore as _cas, ClientAvgSqmScore as _cass, ClientScoreTotal as _cst, ClientRainDivergence as _crd, MarketBookingId, MarketClientName, ContactFullName, ContactPrimaryContactNumber, MarketCategoryName, MarketCategoryId as cid FROM cerb_market_booking b JOIN cerb_market_client c ON c.MarketClientId=b.MarketBookingClientId JOIN cerb_market_contact con ON con.ContactId=c.MarketClientPrimaryContactId JOIN cerb_market_category cat ON cat.MarketCategoryId=c.MarketClientPrimaryCategoryId WHERE c.MarketClientPrimaryCategoryId!=6 AND c.ClientAttendanceScore!=0 GROUP BY MarketClientId LIMIT 500")->result_array();
-			$products = $this->db->query("SELECT p.productId as pid, p.productName as pname, p.productCategoryId as cid, productRelationArray FROM `cerb_client_product` pr JOIN cerb_market_product p ON p.productId=pr.productId GROUP BY p.productId")->result_array();
-			$cats = [];
-			foreach($products as $p) {
-				$cats[$p["cid"]][] = $p;
-			}
-			foreach($data["locs"] as $i=>$l) {
-				$r = rand(0,count($bookings)-1);
-				$booking = $bookings[$r];
-				$booking["products"] = [];
-				for($f=0;$f<5;$f++) {
-					$r = rand(0,count($cats[$booking["cid"]])-1);
-					$prod = $cats[$booking["cid"]][$r];
-					$prod["price"] = rand(5, 20);
-					$booking["products"][] = $prod;
-				}
-				$data["locs"][$i]["booking"] = $booking;
-			}
-			echo json_encode($data);
-
-		} else {
-			$this->load->view('admin/dragonfly/two', $data);
-		}
-
-	}
-
-	public function dragonfly() {
-
-		$data = [];
-		if($this->is_ajax) {
-			$data["locs"] = $this->db->query("SELECT mapLocId, mapLocX, mapLocY, mapLocName, LocRotate, hasAwning FROM `cerb_map_loc` WHERE `mapLocMapId` = 47")->result_array();
-			$bookings = $this->db->query("SELECT ClientAttendanceScore as _cas, ClientAvgSqmScore as _cass, ClientScoreTotal as _cst, ClientRainDivergence as _crd, MarketBookingId, MarketClientName, ContactFullName, ContactPrimaryContactNumber, MarketCategoryName, MarketCategoryId as cid FROM cerb_market_booking b JOIN cerb_market_client c ON c.MarketClientId=b.MarketBookingClientId JOIN cerb_market_contact con ON con.ContactId=c.MarketClientPrimaryContactId JOIN cerb_market_category cat ON cat.MarketCategoryId=c.MarketClientPrimaryCategoryId WHERE c.MarketClientPrimaryCategoryId!=6 AND c.ClientAttendanceScore!=0 GROUP BY MarketClientId LIMIT 500")->result_array();
-			$products = $this->db->query("SELECT p.productId as pid, p.productName as pname, p.productCategoryId as cid, productRelationArray FROM `cerb_client_product` pr JOIN cerb_market_product p ON p.productId=pr.productId GROUP BY p.productId")->result_array();
-			$cats = [];
-			foreach($products as $p) {
-				$cats[$p["cid"]][] = $p;
-			}
-			foreach($data["locs"] as $i=>$l) {
-				$r = rand(0,count($bookings)-1);
-				$booking = $bookings[$r];
-				$booking["products"] = [];
-				for($f=0;$f<5;$f++) {
-					$r = rand(0,count($cats[$booking["cid"]])-1);
-					$prod = $cats[$booking["cid"]][$r];
-					$prod["price"] = rand(5, 20);
-					$booking["products"][] = $prod;
-				}
-				$data["locs"][$i]["booking"] = $booking;
-			}
-			echo json_encode($data);
-
-		} else {
-			$this->load->view('admin/dragonfly/three', $data);
-		}
 
 	}
 
@@ -90,8 +29,7 @@ class three_controller extends CI_Controller {
 			$newgame["motIp"] = $_SERVER["REMOTE_ADDR"];
 			$food_stalls = $this->db->query("
 				SELECT ClientAvgSqmScore as _cass, MarketClientId as _clid, MarketCategoryId as _cid
-				FROM cerb_market_booking b
-				JOIN cerb_market_client c ON c.MarketClientId=b.MarketBookingClientId
+				FROM cerb_market_client c
 				JOIN cerb_market_contact con ON con.ContactId=c.MarketClientPrimaryContactId
 				JOIN cerb_market_category cat ON cat.MarketCategoryId=c.MarketClientPrimaryCategoryId
 				WHERE c.MarketClientPrimaryCategoryId=1
@@ -102,8 +40,7 @@ class three_controller extends CI_Controller {
 			")->result_array();
 			$fruit_stalls = $this->db->query("
 				SELECT ClientAvgSqmScore as _cass, MarketClientId as _clid, MarketCategoryId as _cid
-				FROM cerb_market_booking b
-				JOIN cerb_market_client c ON c.MarketClientId=b.MarketBookingClientId
+				FROM cerb_market_client c
 				JOIN cerb_market_contact con ON con.ContactId=c.MarketClientPrimaryContactId
 				JOIN cerb_market_category cat ON cat.MarketCategoryId=c.MarketClientPrimaryCategoryId
 				WHERE c.MarketClientPrimaryCategoryId=2
@@ -114,8 +51,7 @@ class three_controller extends CI_Controller {
 			")->result_array();
 			$art_stalls = $this->db->query("
 				SELECT ClientAvgSqmScore as _cass, MarketClientId as _clid, MarketCategoryId as _cid
-				FROM cerb_market_booking b
-				JOIN cerb_market_client c ON c.MarketClientId=b.MarketBookingClientId
+				FROM cerb_market_client c
 				JOIN cerb_market_contact con ON con.ContactId=c.MarketClientPrimaryContactId
 				JOIN cerb_market_category cat ON cat.MarketCategoryId=c.MarketClientPrimaryCategoryId
 				WHERE c.MarketClientPrimaryCategoryId=3
@@ -126,8 +62,7 @@ class three_controller extends CI_Controller {
 			")->result_array();
 			$provision_stalls = $this->db->query("
 				SELECT ClientAvgSqmScore as _cass, MarketClientId as _clid, MarketCategoryId as _cid
-				FROM cerb_market_booking b
-				JOIN cerb_market_client c ON c.MarketClientId=b.MarketBookingClientId
+				FROM cerb_market_client c
 				JOIN cerb_market_contact con ON con.ContactId=c.MarketClientPrimaryContactId
 				JOIN cerb_market_category cat ON cat.MarketCategoryId=c.MarketClientPrimaryCategoryId
 				WHERE c.MarketClientPrimaryCategoryId=15
@@ -138,8 +73,7 @@ class three_controller extends CI_Controller {
 			")->result_array();
 			$products = $this->db->query("
 				SELECT p.productId as pid,
-				p.productName as pname,
-				p.productCategoryId as cid
+				p.productName as pname
 				FROM `cerb_client_product` pr
 				JOIN cerb_market_product p
 				ON p.productId=pr.productId
@@ -147,15 +81,15 @@ class three_controller extends CI_Controller {
 			")->result_array();
 			$cats = [];
 			$data["clients"] = [];
-			foreach($products as $p) {
-				$cats[$p["cid"]][] = $p;
-			}
 			$clients = array_merge($food_stalls, $fruit_stalls, $art_stalls, $provision_stalls);
 			foreach(array_reverse($clients) as $i=>$client) {
 				$client["_p"] = [];
 				for($f=0;$f<3;$f++) {
-					$r = rand(0,count($cats[$client["_cid"]])-1);
-					$prod = $cats[$client["_cid"]][$r];
+					// $r = rand(0,count($cats[$client["_cid"]])-1);
+					// $prod = $cats[$client["_cid"]][$r];
+					// pick random product
+					$r = rand(0,count($products)-1);
+					$prod = $products[$r];
 					$cl_prod = [];
 					$cl_prod["_pid"] = $prod["pid"];
 					$cl_prod["_pr"] = rand(5, 20)*$client["_cass"];
@@ -243,7 +177,7 @@ class three_controller extends CI_Controller {
 		if($this->is_ajax) {
 
 			$data["locs"] = $this->db->query("SELECT mapLocId, mapLocX, mapLocY, mapLocName, LocRotate, hasAwning FROM `cerb_map_loc` WHERE `mapLocMapId` = 47")->result_array();
-			$data["products"] = $this->db->query("SELECT p.productId as pid, p.productName as pname, p.productCategoryId as cid FROM `cerb_client_product` pr JOIN cerb_market_product p ON p.productId=pr.productId GROUP BY p.productId")->result_array();
+			$data["products"] = $this->db->query("SELECT p.productId as pid, p.productName as pname FROM `cerb_client_product` pr JOIN cerb_market_product p ON p.productId=pr.productId GROUP BY p.productId")->result_array();
 			$game_id = $this->input->post('id');
 			if(!$game_id) { return; }
 			$game = $this->proton_mot_model->get($game_id);
@@ -256,33 +190,6 @@ class three_controller extends CI_Controller {
 			echo json_encode($data);
 
 		}
-	}
-
-	public function globe() {
-
-		$data = [];
-		$this->load->view('admin/threejs/globe', $data);
-
-	}
-
-	public function helicopter() {
-
-		$data = [];
-		$this->load->view('admin/threejs/heli', $data);
-
-	}
-
-	public function threejs($file) {
-
-		$data = [];
-		$this->load->view('admin/dragonfly/' . $file, $data);
-
-	}
-
-	public function ammo() {
-
-		$this->threejs("ammo");
-
 	}
 
 }

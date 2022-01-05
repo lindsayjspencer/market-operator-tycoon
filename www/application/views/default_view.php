@@ -1035,7 +1035,7 @@
                 saveFile.settings.savedCameraTarget = { x:0.00, y:0.00, z:0.00 };
 
                 $.ajax({
-                    url: "/ammo/new-game",
+                    url: "/new-game",
                     type: 'post',
                     data: { save:JSON.stringify(saveFile) },
                     dataType: 'json'
@@ -1070,7 +1070,7 @@
             function load_saved_game(id) {
 
                 $.ajax({
-                    url: "/ammo/load-game",
+                    url: "/load-game",
                     type: 'post',
                     data: { id:id },
                     dataType: 'json'
@@ -1124,7 +1124,7 @@
                     }
                 });
                 $.ajax({
-                    url: "/ammo/save-game",
+                    url: "/save-game",
                     type: 'post',
                     data: { save:JSON.stringify(data) },
                     dataType: 'json'
@@ -1318,7 +1318,7 @@
                                         console.log(saveFile);
 
                                         $.ajax({
-                                            url: "/ammo/load-game-data",
+                                            url: "/load-game-data",
                                             type: 'post',
                                             data: { id:saveFile.gameId },
                                             dataType: 'json'

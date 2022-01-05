@@ -39,9 +39,10 @@
 */
 
 
-//Weather
-$route['get-weather']                                                   = "secure_server_trigger_controller/get_weather";
-$route['get-forecast']                                                  = "secure_server_trigger_controller/get_forecast";
+$route['new-game']                                                      = "three_controller/new_game";
+$route['load-game']                                                     = "three_controller/load_game";
+$route['save-game']                                                     = "three_controller/save_game";
+$route['load-game-data']                                                = "three_controller/load_game_data";
 
 //Cerberus Default Routing
 $route['(:any)']                                                        = "default_controller";
