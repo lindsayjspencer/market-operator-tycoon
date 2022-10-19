@@ -14,12 +14,7 @@
 		<style>
             @media only screen and (min-width: 578px) {
                 .to-toggle {
-                    transition: max-width 200ms ease-in-out, min-width 200ms ease-in-out;
                     overflow-x: hidden;
-                }
-                .to-toggle.hide {
-                    max-width: 0px;
-                    min-width: 0px;
                 }
                 .stall-ticker-container {
                     min-width: 14rem;
@@ -42,7 +37,6 @@
                     min-width: 0rem;
                 }
                 .to-toggle.hide {
-                    transition: max-width 200ms ease-in-out, min-width 200ms ease-in-out;
                     min-width: 13rem;
                 }
                 .to-toggle {
@@ -50,6 +44,9 @@
                     overflow-x: hidden;
                     min-width: 0px;
                 }
+				div.control-panel {
+					display: none;
+				}
             }
 			body {
 				background-color: #cce0ff;
@@ -251,11 +248,11 @@
                 overflow-y: scroll;
                 overflow-x: hidden;
             }
-            .open-menu {
+            .control-panel {
                 transition: transform 400ms ease-in-out;
                 transform: translateY(0vh);
             }
-            .open-menu.hide {
+            .control-panel.hide {
                 transition: transform 400ms ease-in-out;
                 transform: translateY(100vh);
             }
@@ -333,7 +330,6 @@
 			<div class="d-flex flex-column game-screen-options mb-auto finished-loading hide align-items-center">
 	            <a href="#" class="rounded-0 border-0 btn btn-primary start-new-game m-1">Start new game</a>
 	            <a href="#" class="rounded-0 border-0 btn btn-warning text-white continue-saved-game m-1">Continue saved game</a>
-	            <a href="#" class="rounded-0 border-0 btn btn-success text-white demo-game m-1">Demo</a>
 			</div>
 		</div>
 		<div class="loading-msg d-flex flex-column align-items-center">
@@ -638,7 +634,7 @@
                         <i class="py-1 far fa-circle fa-fw ml-auto"></i>
                     </a>
                     <a href="#" class="btn btn-menu rounded-0 border-0 flip-gravity-toggle d-flex align-content-stretch p-0 w-100">
-                        <span class="py-1 px-3">Flip gravity tho</span>
+                        <span class="py-1 px-3">Flip gravity</span>
                         <i class="py-1 far fa-arrow-alt-circle-up fa-fw ml-auto"></i>
                     </a>
                 </div>
@@ -654,7 +650,7 @@
 		</div>
 		<div class="bg-white ml-auto d-flex flex-row ticker-container" style="border-top-left-radius: 0.5rem;">
             <div class="d-flex align-content-stretch p-0 bg-white account-ticker-container">
-                <div class="d-flex flex-row flex-fill to-toggle">
+                <div class="d-flex flex-row flex-fill to-toggle hide">
                     <h6 class="d-flex flex-column m-0 px-3 flex-fill justify-content-center">
                         <small class="mx-auto text-black-50 sales-balance-ticker text-center"></small>
                         <small class="mx-auto font-weight-bold text-center">Sales</small>
@@ -736,7 +732,7 @@
             var marketCustomers = [];
             var marketCustomersBuying = [];
             var marketCustomersLeaving = [];
-            var gameTimeUnit = 10;
+            var gameTimeUnit = 1;
             var auto_save_frame_trigger = 200;
             var gameTimeMultiplier = 0;
             var lastSave;
@@ -1387,7 +1383,7 @@
 
                 var savedCameraPosition = saveFile.settings.savedCameraPosition;
                 var savedCameraTarget = saveFile.settings.savedCameraTarget;
-				camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 1, circle_radius*2 );
+				camera = new THREE.PerspectiveCamera( 60, window.innerWidth / window.innerHeight, 1, circle_radius*2 );
                 camera.position.set( parseInt(savedCameraPosition.x), parseInt(savedCameraPosition.y), parseInt(savedCameraPosition.z) );
 
 				// lights
@@ -1573,8 +1569,8 @@
                 controls = new OrbitControls( camera, renderer.domElement );
                 controls.maxPolarAngle = Math.PI * 0.30;
                 controls.minPolarAngle = Math.PI * 0.30;
-                controls.minDistance = 25;
-                controls.maxDistance = 120;
+                controls.minDistance = 70;
+                controls.maxDistance = 150;
                 // controls.autoRotate = true;
                 controls.enableDamping = true;
                 controls.dampingFactor = 0.15;
@@ -3520,7 +3516,7 @@
                 $(".open-menu").on("click", function() {
                     var b = $(".open-menu");
                     $(".left-menu").toggleClass("show");
-                    b.toggleClass("hide");
+                    $(".control-panel").toggleClass("hide");
                     if($(".menu-container").hasClass("hide")) {
                         stop2dShapeCapture();
                     }
@@ -3531,7 +3527,7 @@
                 	if (e.stopPropagation) e.stopPropagation();
                     var b = $(".open-menu");
                     $(".left-menu").toggleClass("show");
-                    b.toggleClass("hide");
+                    $(".control-panel").toggleClass("hide");
                     if($(".menu-container").hasClass("hide")) {
                         stop2dShapeCapture();
                     }
@@ -4186,7 +4182,7 @@
                         $(".time-ticker").removeClass("text-black-50").addClass("text-white-50");
                     }
                     market_status = 'open';
-                    if(saveFile.stats.gameTime % 30 == 0) {
+                    if(saveFile.stats.gameTime % 300 == 0) {
                         // market revenue formula
                         if(savedStalls) {
 
@@ -4217,7 +4213,7 @@
                         }
                     }
 
-                    if(savedStalls) {
+                    if(savedStalls && saveFile.stats.gameTime % 2 == 0) {
 
                         switch(date.getHours()) {
                             case 6:
@@ -4265,9 +4261,9 @@
                         $(".market-ticker-container").addClass("bg-warning").removeClass("bg-success");
                     }
                     // increase time passing if market is closed
-                    gameTimeMultiplier = 3;
+                    gameTimeMultiplier = 30;
                     // increase time passing further if sundown
-                    if(isSundown) { gameTimeMultiplier = 7; }
+                    if(isSundown) { gameTimeMultiplier = 70; }
                     saveFile.stats.gameTime+=(gameTimeMultiplier);
                 }
 
