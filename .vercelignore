@@ -1,0 +1,6 @@
+artifacts
+coverage
+deploy-db.sql
+playwright-report
+test-results
+www

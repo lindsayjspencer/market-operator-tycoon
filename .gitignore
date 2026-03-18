@@ -1,0 +1,10 @@
+.next
+coverage
+node_modules
+artifacts
+dist
+playwright-report
+test-results
+.vercel
+vitest.workspace.ts.timestamp-*
+*.tsbuildinfo

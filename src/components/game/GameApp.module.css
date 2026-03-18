@@ -1,0 +1,283 @@
+.shell {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr) 360px;
+  min-height: 100vh;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-height: 0;
+}
+
+.card {
+  background: var(--app-panel);
+  border: 1px solid var(--app-panel-border);
+  border-radius: 24px;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(18px);
+}
+
+.brandCard {
+  padding: 1.2rem;
+}
+
+.logoRow {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.eyebrow {
+  color: var(--app-accent);
+  font-family: var(--font-display), sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0.15rem 0 0;
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.muted {
+  color: var(--app-text-muted);
+}
+
+.summaryCard,
+.detailCard {
+  padding: 1.2rem;
+}
+
+.summaryGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.statBox {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.85rem;
+}
+
+.statLabel {
+  color: var(--app-text-muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.statValue {
+  margin-top: 0.35rem;
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.3rem;
+}
+
+.canvasCard {
+  overflow: hidden;
+  min-height: 72vh;
+  position: relative;
+}
+
+.canvasWrap {
+  position: absolute;
+  inset: 0;
+}
+
+.canvasOverlay {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 14%, rgba(255, 255, 255, 0.16), transparent 24%),
+    linear-gradient(180deg, rgba(9, 18, 30, 0.1), rgba(9, 18, 30, 0.2));
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.button {
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--app-text);
+  cursor: pointer;
+  padding: 0.8rem 1rem;
+  transition:
+    transform 140ms ease,
+    background 140ms ease,
+    border-color 140ms ease;
+}
+
+.button:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.buttonPrimary {
+  background: linear-gradient(135deg, var(--app-accent), var(--app-accent-strong));
+  color: #180f09;
+  font-weight: 700;
+}
+
+.buttonSelected {
+  background: rgba(240, 127, 47, 0.18);
+  outline: 1px solid rgba(245, 166, 91, 0.35);
+}
+
+.buttonDisabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.categoryRow {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.categoryButton {
+  align-items: center;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  justify-content: space-between;
+  padding: 0.9rem 1rem;
+}
+
+.vendorCard {
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 1rem;
+}
+
+.vendorHeading {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+.vendorName {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.05rem;
+}
+
+.priceTag {
+  color: var(--app-accent);
+  font-weight: 700;
+}
+
+.productList {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.8rem 0;
+}
+
+.metricGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.metricRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.meter {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  height: 0.45rem;
+  overflow: hidden;
+}
+
+.meterFill {
+  border-radius: inherit;
+  height: 100%;
+}
+
+.detailBadge {
+  border-radius: 999px;
+  display: inline-flex;
+  padding: 0.35rem 0.7rem;
+  font-size: 0.78rem;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.emptyState {
+  color: var(--app-text-muted);
+  font-size: 0.96rem;
+  line-height: 1.5;
+}
+
+.sectionTitle {
+  font-family: var(--font-display), sans-serif;
+  font-size: 1.08rem;
+  margin: 0 0 0.8rem;
+}
+
+.detailHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: start;
+}
+
+.statusPill {
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.4rem 0.75rem;
+}
+
+.statusOpen {
+  background: rgba(52, 211, 153, 0.16);
+  color: var(--app-success);
+}
+
+.statusClosed {
+  background: rgba(251, 191, 36, 0.16);
+  color: var(--app-warning);
+}
+
+.footerHint {
+  color: var(--app-text-muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.errorCard {
+  padding: 1rem 1.2rem;
+  border-color: rgba(251, 113, 133, 0.24);
+}
+
+.loadingCard {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  min-height: 72vh;
+  padding: 2rem;
+}
+
+@media (max-width: 1220px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+
+  .canvasCard {
+    min-height: 60vh;
+  }
+}
